@@ -1,14 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutSettingd"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsFragment">
+    tools:context=".SettingsFragment" >
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/textViewShowAddParam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="55dp"
+        android:text="@string/textviewShowAddParam"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <Switch
+        android:id="@+id/switchShowAirPressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/switchShowAirPressure"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewShowAddParam"
+        app:layout_constraintTop_toBottomOf="@+id/textViewShowAddParam" />
+
+    <Switch
+        android:id="@+id/switchShowWindSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:scrollbarSize="8dp"
+        android:text="@string/switchShowWindSpeed"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/switchShowHumidity"
+        app:layout_constraintTop_toBottomOf="@+id/switchShowHumidity" />
+
+    <Switch
+        android:id="@+id/switchShowHumidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/switchShowHumidity"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/switchShowAirPressure"
+        app:layout_constraintTop_toBottomOf="@+id/switchShowAirPressure" />
+
+    <Switch
+        android:id="@+id/switchShowRainPossibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/switchShowRainPossibility"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/switchShowWindSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/switchShowWindSpeed" />
+
+    <TextView
+        android:id="@+id/textViewShowTempMesur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="45dp"
+        android:text="@string/textviewShowTemperatureMesur"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchShowRainPossibility" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupSetTempMesur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="24dp"
+        android:checkedButton="@id/radioButtonSetTempMesurCelcium"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewShowTempMesur">
+
+        <RadioButton
+            android:id="@+id/radioButtonSetTempMesurCelcium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/radioButtonSetTempCelcium" />
+
+        <RadioButton
+            android:id="@+id/radioButtonSetTempMesurFahren"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="106dp"
+            android:text="@string/radioButtonSetTempFahren" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textViewSetTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="@string/textviewSetTheme"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewShowTempMesur"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupSetTempMesur" />
+
+    <Switch
+        android:id="@+id/switchDarkLigthTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/switchDarkLightTheme"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewSetTheme"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSetTheme" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,4 +15,14 @@
     <string name="hintTextInputCity">Enter city</string>
     <string name="textViewRecentCityItem" />
     <string name="textViewRecenrCities">Recent cities:</string>
+    <string name="textviewShowAddParam">show additional:</string>
+    <string name="switchShowWindSpeed">wind speed</string>
+    <string name="switchShowAirPressure">air pressure</string>
+    <string name="switchShowHumidity">humidity</string>
+    <string name="switchShowRainPossibility">rain possibility</string>
+    <string name="textviewShowTemperatureMesur">show temperature in:</string>
+    <string name="radioButtonSetTempCelcium">C</string>
+    <string name="radioButtonSetTempFahren">F</string>
+    <string name="textviewSetTheme">theme:</string>
+    <string name="switchDarkLightTheme">light / dark</string>
 </resources>
