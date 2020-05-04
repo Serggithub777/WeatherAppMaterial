@@ -1,23 +1,30 @@
 package com.example.weatherappmaterial;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
 public class StartFragment extends Fragment {
-
+    private Button buttonShowWeather;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -29,16 +36,27 @@ public class StartFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        buttonShowWeather = view.findViewById(R.id.buttonShowWeather);
+        LinearLayout viewRecentCitiesList = view.findViewById(R.id.recent_cities_List_linear_layout);
+        TextInputLayout viewTextInputLayoutEnterCity = view.findViewById(R.id.textInputLayoutEnterCity);
+        onClickListenerShowWeather(viewTextInputLayoutEnterCity);
+        initListRecentCities(viewRecentCitiesList);
+    }
 
-        view.findViewById(R.id.buttonShowWeather).setOnClickListener(new View.OnClickListener() {
+    private void onClickListenerShowWeather(final View viewTextInputLayoutEnterCity) {
+        buttonShowWeather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(StartFragment.this)
-                        .navigate(R.id.action_startFragment_to_weatherFragment);
+                TextInputEditText textInputCityEnter = viewTextInputLayoutEnterCity.findViewById(R.id.textInputCityEnter);
+                String cityName = Objects.requireNonNull(textInputCityEnter.getText()).toString().trim();
+                if (cityName.isEmpty()) {
+                    Toast.makeText(getContext(), "Enter City Name!", Toast.LENGTH_SHORT).show();
+                } else {
+                    NavHostFragment.findNavController(StartFragment.this)
+                            .navigate(R.id.action_startFragment_to_weatherFragment);
+                }
             }
         });
-        LinearLayout viewRecentCitiesList = view.findViewById(R.id.recent_cities_List_linear_layout);
-        initListRecentCities(viewRecentCitiesList);
     }
     private void initListRecentCities(LinearLayout viewRecentCitiesLinearLayout) {
         String[] recentCities = getResources().getStringArray(R.array.recentCities);
@@ -63,4 +81,5 @@ public class StartFragment extends Fragment {
 
         }
     }
+
 }

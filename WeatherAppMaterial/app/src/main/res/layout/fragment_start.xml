@@ -7,7 +7,7 @@
     tools:context=".StartFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/textInputLayoutEnterCity"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -29,6 +29,27 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/textViewRecentCities"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/textViewRecenrCities"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEnterCity" />
+
+    <LinearLayout
+        android:id="@+id/recent_cities_List_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRecentCities"
+        tools:layout_editor_absoluteX="1dp" />
+
     <Button
         android:id="@+id/buttonShowWeather"
         android:layout_width="wrap_content"
@@ -39,24 +60,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textViewRecentCities"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="52dp"
-        android:text="Recent cities:"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
-    <LinearLayout
-        android:id="@+id/recent_cities_List_linear_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRecentCities"
-        tools:layout_editor_absoluteX="1dp"></LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
