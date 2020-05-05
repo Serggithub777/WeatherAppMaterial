@@ -1,5 +1,6 @@
 package com.example.weatherappmaterial;
 
+import android.app.Fragment;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -8,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.View;
 import android.view.Menu;
@@ -59,4 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+        //NavHostFragment.findNavController(WeatherFragment.this).navigate(R.id.action_weatherFragment_to_startFragment);
+
 }

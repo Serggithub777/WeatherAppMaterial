@@ -9,9 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import java.util.Objects;
+
 public class WeatherFragment extends Fragment {
 
-    @Override
+
+      @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
@@ -23,12 +26,13 @@ public class WeatherFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(WeatherFragment.this)
-                        .navigate(R.id.action_weatherFragment_to_startFragment);
-            }
-        });
+
+
     }
+    public void callParentMethod(){
+        requireActivity().onBackPressed();
+    }
+
+//  NavHostFragment.findNavController(WeatherFragment.this).navigate(R.id.action_weatherFragment_to_startFragment);
+
 }

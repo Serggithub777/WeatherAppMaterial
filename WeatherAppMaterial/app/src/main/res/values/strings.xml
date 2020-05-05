@@ -1,17 +1,7 @@
 <resources>
     <string name="app_name">WeatherAppMaterial</string>
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Show Weather</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="buttonShowWeather">Show Weather</string>
     <string name="hintTextInputCity">Enter city</string>
     <string name="textViewRecentCityItem" />
     <string name="textViewRecenrCities">Recent cities:</string>
@@ -25,4 +15,20 @@
     <string name="radioButtonSetTempFahren">F</string>
     <string name="textviewSetTheme">theme:</string>
     <string name="switchDarkLightTheme">light / dark</string>
+    <string name="textViewNow">now:</string>
+    <string name="textViewCityName" />
+    <string name="show_weather_icons">show_weather_icons</string>
+    <string name="textVewTemperature">+12</string>
+    <string name="textViewTempMesur">C</string>
+    <string name="textViewAngle">o</string>
+    <string name="textViewTextWeather">cloudy</string>
+    <string name="textViewTime">12 : 12</string>
+    <string name="textViewDayOfWeek">friday</string>
+    <string name="textViewDate">12 april 2020</string>
+    <string name="textviewWindValue">3</string>
+    <string name="textviewPressureValue">796</string>
+    <string name="textviewWindSpeedMesur">km/h</string>
+    <string name="textviewPressurMesur">Hg mm</string>
+    <string name="textviewProbablyMesur">%</string>
+    <string name="textviewPobablyValue">78</string>
 </resources>

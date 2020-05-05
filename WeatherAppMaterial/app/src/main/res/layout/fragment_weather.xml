@@ -7,21 +7,228 @@
     tools:context=".WeatherFragment">
 
     <TextView
-        android:id="@+id/textview_second"
+        android:id="@+id/textViewNow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/button_second"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/textViewNow"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCityName" />
+
+    <TextView
+        android:id="@+id/textViewCityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textViewCityName"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_second"
+    <ImageView
+        android:id="@+id/imageViewWeatherIcon"
+        android:layout_width="142dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="36dp"
+        android:contentDescription="@string/show_weather_icons"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNow"
+        app:srcCompat="@drawable/cloudy_icon_xxxhdpi" />
+
+    <TextView
+        android:id="@+id/textViewItemTemperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/previous"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="100dp"
+        android:text="@string/textVewTemperature"
+        android:textSize="62sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/imageViewWeatherIcon"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTextWeather" />
+
+    <TextView
+        android:id="@+id/textViewTempMesur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textViewTempMesur"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewDate"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toEndOf="@+id/textViewAngle"
+        app:layout_constraintTop_toTopOf="@+id/textViewAngle"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewAngle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textViewAngle"
+        android:textSize="36sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewItemTemperature"
+        app:layout_constraintTop_toTopOf="@+id/textViewItemTemperature" />
+
+    <TextView
+        android:id="@+id/textViewTextWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textViewTextWeather"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewWeatherIcon"
+        app:layout_constraintStart_toStartOf="@+id/imageViewWeatherIcon"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewWeatherIcon" />
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/textViewTime"
+        android:textSize="42sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toEndOf="@+id/textViewNow"
+        app:layout_constraintTop_toTopOf="@+id/textViewNow" />
+
+    <TextView
+        android:id="@+id/textViewDayOfWeek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textViewDayOfWeek"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTime"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTime" />
+
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textViewDate"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTime"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDayOfWeek" />
+
+    <TextView
+        android:id="@+id/textViewWindSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/switchShowWindSpeed"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_second" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewItemTemperature" />
+
+    <TextView
+        android:id="@+id/textViewAirPressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/switchShowAirPressure"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewWindSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWindSpeed" />
+
+    <TextView
+        android:id="@+id/textViewRainProbably"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/switchShowRainPossibility"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewAirPressure"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAirPressure" />
+
+    <TextView
+        android:id="@+id/textViewHumidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/switchShowHumidity"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="468dp" />
+
+    <TextView
+        android:id="@+id/textViewWindValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/textviewWindValue"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewWindSpeed"
+        app:layout_constraintStart_toEndOf="@+id/textViewWindSpeed" />
+
+    <TextView
+        android:id="@+id/textViewPresureValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/textviewPressureValue"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewAirPressure"
+        app:layout_constraintStart_toEndOf="@+id/textViewAirPressure" />
+
+    <TextView
+        android:id="@+id/textViewProbablyValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/textviewPobablyValue"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewRainProbably"
+        app:layout_constraintStart_toEndOf="@+id/textViewRainProbably" />
+
+    <TextView
+        android:id="@+id/textViewWindSpeedMesur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="@string/textviewWindSpeedMesur"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewWindValue"
+        app:layout_constraintStart_toEndOf="@+id/textViewWindValue" />
+
+    <TextView
+        android:id="@+id/textViewPressureMesur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/textviewPressurMesur"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewPresureValue"
+        app:layout_constraintStart_toEndOf="@+id/textViewPresureValue"
+        tools:ignore="UnknownId" />
+
+    <TextView
+        android:id="@+id/textViewProbablyMesur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="@string/textviewProbablyMesur"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewProbablyValue"
+        app:layout_constraintEnd_toEndOf="@+id/textViewPressureMesur"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewProbablyValue" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
