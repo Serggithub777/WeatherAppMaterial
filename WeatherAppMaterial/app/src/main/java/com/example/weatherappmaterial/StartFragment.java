@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -47,13 +48,15 @@ public class StartFragment extends Fragment {
         buttonShowWeather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle args = new Bundle();
                 TextInputEditText textInputCityEnter = viewTextInputLayoutEnterCity.findViewById(R.id.textInputCityEnter);
                 String cityName = Objects.requireNonNull(textInputCityEnter.getText()).toString().trim();
                 if (cityName.isEmpty()) {
                     Toast.makeText(getContext(), "Enter City Name!", Toast.LENGTH_SHORT).show();
                 } else {
-                    NavHostFragment.findNavController(StartFragment.this)
-                            .navigate(R.id.action_startFragment_to_weatherFragment);
+                    args.putString("CityName",cityName);
+                    Navigation.findNavController(view).navigate(R.id.action_startFragment_to_weatherFragment,args);
+                   // NavHostFragment.findNavController(StartFragment.this).navigate(R.id.action_startFragment_to_weatherFragment);
                 }
             }
         });

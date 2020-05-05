@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -12,7 +13,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import java.util.Objects;
 
 public class WeatherFragment extends Fragment {
-
+      private TextView textViewCityName;
 
       @Override
     public View onCreateView(
@@ -25,9 +26,16 @@ public class WeatherFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        textViewCityName = view.findViewById(R.id.textViewCityName);
+        setCityName(textViewCityName);
 
 
+    }
 
+    private void setCityName(TextView textViewCityName) {
+        if (getArguments() != null) {
+            textViewCityName.setText(getArguments().getString("CityName"));
+        }
     }
     public void callParentMethod(){
         requireActivity().onBackPressed();

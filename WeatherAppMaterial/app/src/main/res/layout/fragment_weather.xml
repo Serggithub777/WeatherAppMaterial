@@ -122,35 +122,32 @@
         android:id="@+id/textViewWindSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="20dp"
         android:text="@string/switchShowWindSpeed"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewItemTemperature" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewHumidity"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHumidity" />
 
     <TextView
         android:id="@+id/textViewAirPressure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:text="@string/switchShowAirPressure"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textViewWindSpeed"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWindSpeed" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewItemTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/textViewItemTemperature" />
 
     <TextView
         android:id="@+id/textViewRainProbably"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="@string/switchShowRainPossibility"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textViewAirPressure"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAirPressure" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewWindSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWindSpeed" />
 
     <TextView
         android:id="@+id/textViewHumidity"
@@ -159,8 +156,8 @@
         android:text="@string/switchShowHumidity"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="157dp"
-        tools:layout_editor_absoluteY="468dp" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewAirPressure"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAirPressure" />
 
     <TextView
         android:id="@+id/textViewWindValue"
@@ -196,10 +193,21 @@
         app:layout_constraintStart_toEndOf="@+id/textViewRainProbably" />
 
     <TextView
+        android:id="@+id/textViewHumidityValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/textviewHumidityValue"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewHumidity"
+        app:layout_constraintStart_toEndOf="@+id/textViewHumidity" />
+
+    <TextView
         android:id="@+id/textViewWindSpeedMesur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="8dp"
         android:text="@string/textviewWindSpeedMesur"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -228,7 +236,18 @@
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewProbablyValue"
         app:layout_constraintEnd_toEndOf="@+id/textViewPressureMesur"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toEndOf="@+id/textViewProbablyValue" />
+
+    <TextView
+        android:id="@+id/textViewHumidityMesur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/textviewHumidityyMesur"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewHumidityValue"
+        app:layout_constraintStart_toEndOf="@+id/textViewHumidityValue" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

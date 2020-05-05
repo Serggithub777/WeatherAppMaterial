@@ -31,4 +31,6 @@
     <string name="textviewPressurMesur">Hg mm</string>
     <string name="textviewProbablyMesur">%</string>
     <string name="textviewPobablyValue">78</string>
+    <string name="textviewHumidityValue">92</string>
+    <string name="textviewHumidityyMesur">%</string>
 </resources>
