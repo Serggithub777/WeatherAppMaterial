@@ -5,17 +5,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.weatherappmaterial.data.WeatherRequest;
+import com.google.gson.Gson;
+
+import java.lang.reflect.Type;
 import java.util.Objects;
+import java.util.logging.Handler;
 
 public class WeatherFragment extends Fragment {
       private TextView textViewCityName;
+      String nameCity;
 
-      @Override
+    @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
@@ -34,9 +41,16 @@ public class WeatherFragment extends Fragment {
 
     private void setCityName(TextView textViewCityName) {
         if (getArguments() != null) {
-            textViewCityName.setText(getArguments().getString("CityName"));
+           String resultRequest = getArguments().getString("ResultRequest");
+           Gson gson = new Gson();
+           final WeatherRequest weatherRequest = gson.fromJson(resultRequest, WeatherRequest.class);
+           String nameCity = weatherRequest.getName();
+           Toast.makeText(getContext(), nameCity, Toast.LENGTH_SHORT).show();
+           textViewCityName.setText(weatherRequest.getName());
+            }
+
         }
-    }
+
     public void callParentMethod(){
         requireActivity().onBackPressed();
     }
