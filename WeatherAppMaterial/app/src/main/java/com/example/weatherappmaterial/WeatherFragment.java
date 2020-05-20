@@ -11,7 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.weatherappmaterial.R;
 import com.example.weatherappmaterial.data.WeatherRequest;
+import com.example.weatherappmaterial.data.WeatherRequestList;
 import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
@@ -43,10 +45,9 @@ public class WeatherFragment extends Fragment {
         if (getArguments() != null) {
            String resultRequest = getArguments().getString("ResultRequest");
            Gson gson = new Gson();
-           final WeatherRequest weatherRequest = gson.fromJson(resultRequest, WeatherRequest.class);
-           String nameCity = weatherRequest.getName();
-           Toast.makeText(getContext(), nameCity, Toast.LENGTH_SHORT).show();
-           textViewCityName.setText(weatherRequest.getName());
+           final WeatherRequestList weatherRequestList = gson.fromJson(resultRequest, WeatherRequestList.class);
+           WeatherRequest [] weatherRequest = weatherRequestList.getList();
+           textViewCityName.setText(weatherRequest[0].getName());
             }
 
         }
