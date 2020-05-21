@@ -40,7 +40,7 @@ import java.util.stream.Collectors;
 import javax.net.ssl.HttpsURLConnection;
 
 public class StartFragment extends Fragment {
-    private static final String TAG ="WEATHER";
+    private static final String TAG = "WEATHER";
     private static final String WEATHER_URL = "https://api.openweathermap.org/data/2.5/find?q=Almaty&units=metric&appid=";
     private static final String WEATHER_API_KEY = "1186203397d0695eb17fe6d368432737";
     private String enteredCityName;
@@ -66,7 +66,7 @@ public class StartFragment extends Fragment {
         initListRecentCities(viewRecentCitiesList);
     }
 
-    private void onClickListenerShowWeather(TextInputEditText textInputEditTextEnterCity ) {
+    private void onClickListenerShowWeather(TextInputEditText textInputEditTextEnterCity) {
         enteredCityName = Objects.requireNonNull(textInputEditTextEnterCity.getText()).toString();
         buttonShowWeather.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,15 +90,9 @@ public class StartFragment extends Fragment {
                                     @Override
                                     public void run() {
                                         Bundle args = new Bundle();
-                                       // TextInputEditText textInputCityEnter = viewTextInputLayoutEnterCity.findViewById(R.id.textInputCityEnter);
-                                       // String cityName = Objects.requireNonNull(textInputCityEnter.getText()).toString().trim();
-                                       // if (cityName.isEmpty()) {
-                                       //     Toast.makeText(getContext(), "Enter City Name!", Toast.LENGTH_SHORT).show();
-                                       // } else {
-                                            args.putString("ResultRequest", resultRequest);
-                                            Navigation.findNavController(view).navigate(R.id.action_startFragment_to_weatherFragment,args);
-                                            // NavHostFragment.findNavController(StartFragment.this).navigate(R.id.action_startFragment_to_weatherFragment);
-                                       // }
+                                        args.putString("ResultRequest", resultRequest);
+                                        Navigation.findNavController(view).navigate(R.id.action_startFragment_to_weatherFragment, args);
+
                                     }
                                 });
                             } catch (Exception e) {
@@ -125,6 +119,7 @@ public class StartFragment extends Fragment {
             }
         });
     }
+
     private void initListRecentCities(LinearLayout viewRecentCitiesLinearLayout) {
         String[] recentCities = getResources().getStringArray(R.array.recentCities);
         LayoutInflater layoutInflater = getLayoutInflater();
@@ -145,8 +140,6 @@ public class StartFragment extends Fragment {
                     cityName.setText(city);
                 }
             });
-
         }
     }
-
 }

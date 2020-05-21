@@ -2,11 +2,21 @@ package com.example.weatherappmaterial.data;
 
 public class WeatherRequest {
     private Coord coord;
-    private Weather[] weather;
+    private Weather [] weather;
     private Main main;
     private Wind wind;
     private Clouds clouds;
     private String name;
+
+    public Weather[] getWeatherList() {
+        return weather;
+    }
+
+    public void setWeatherList(Weather[] weather) {
+        this.weather = weather;
+    }
+
+
 
     public Coord getCoord() {
         return coord;
@@ -14,14 +24,6 @@ public class WeatherRequest {
 
     public void setCoord(Coord coord) {
         this.coord = coord;
-    }
-
-    public Weather[] getWeather() {
-        return weather;
-    }
-
-    public void setWeather(Weather[] weather) {
-        this.weather = weather;
     }
 
     public Main getMain() {
