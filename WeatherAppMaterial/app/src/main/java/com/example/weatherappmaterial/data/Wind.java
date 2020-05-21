@@ -1,9 +1,9 @@
 package com.example.weatherappmaterial.data;
 
 public class Wind {
-    private int speed;
+    private float speed;
 
-    public int getSpeed() {
+    public float getSpeed() {
         return speed;
     }
 

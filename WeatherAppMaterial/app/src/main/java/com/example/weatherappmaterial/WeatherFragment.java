@@ -63,7 +63,7 @@ public class WeatherFragment extends Fragment {
     }
 
     private void setWindSpeed(TextView textViewWindValue, WeatherRequest[] weatherRequest) {
-        int windValue = weatherRequest[0].getWind().getSpeed();
+        float windValue = weatherRequest[0].getWind().getSpeed();
         String textWindValue = String.valueOf(windValue);
         textViewWindValue.setText(textWindValue);
    }

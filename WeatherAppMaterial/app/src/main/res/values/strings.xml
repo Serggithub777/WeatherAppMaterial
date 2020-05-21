@@ -18,13 +18,10 @@
     <string name="textViewNow">now:</string>
     <string name="textViewCityName">- / -</string>
     <string name="show_weather_icons">show_weather_icons</string>
-    <string name="textVewTemperature">12</string>
+    <string name="textVewTemperature">- / -</string>
     <string name="textViewTempMesur">C</string>
     <string name="textViewAngle">o</string>
     <string name="textViewTextWeatherIcon">- / -</string>
-    <string name="textViewTime">12 : 12</string>
-    <string name="textViewDayOfWeek">friday</string>
-    <string name="textViewDate">12 april 2020</string>
     <string name="textviewWindValue">- / -</string>
     <string name="textviewPressureValue">- / -</string>
     <string name="textviewWindSpeedMesur">km/h</string>
@@ -34,4 +31,6 @@
     <string name="textviewHumidityValue">- / -</string>
     <string name="textviewHumidityyMesur">%</string>
     <string name="textViewPlusTemp">+</string>
+    <string name="dayOfWeek">day</string>
+    <string name="textDate">date</string>
 </resources>
