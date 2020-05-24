@@ -41,7 +41,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class StartFragment extends Fragment {
     private static final String TAG = "WEATHER";
-    private static final String WEATHER_URL = "https://api.openweathermap.org/data/2.5/find?q=Minsk&units=metric&appid=";
+    private static final String WEATHER_URL = "https://api.openweathermap.org/data/2.5/find?q=&units=metric&appid=";
     private static final String WEATHER_API_KEY = "1186203397d0695eb17fe6d368432737";
     private String enteredCityName;
     private Button buttonShowWeather;
@@ -61,17 +61,18 @@ public class StartFragment extends Fragment {
         LinearLayout viewRecentCitiesList = view.findViewById(R.id.recent_cities_List_linear_layout);
         TextInputLayout viewTextInputLayoutEnterCity = view.findViewById(R.id.textInputLayoutEnterCity);
         TextInputEditText textInputEditTextEnterCity = viewTextInputLayoutEnterCity.findViewById(R.id.textInputCityEnter);
-        onClickListenerShowWeather(textInputEditTextEnterCity);
-
         initListRecentCities(viewRecentCitiesList);
+        onClickListenerShowWeather(textInputEditTextEnterCity);
     }
 
     private void onClickListenerShowWeather(TextInputEditText textInputEditTextEnterCity) {
         enteredCityName = Objects.requireNonNull(textInputEditTextEnterCity.getText()).toString().trim();
+        Toast.makeText(getContext(), enteredCityName, Toast.LENGTH_SHORT).show();
         buttonShowWeather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
                 try {
+                    //String request = createRequestString(enteredCityName);
                     final URL uri = new URL(WEATHER_URL + WEATHER_API_KEY);
                     final Handler handler = new Handler();
 
@@ -138,4 +139,11 @@ public class StartFragment extends Fragment {
             });
         }
     }
-}
+    private String createRequestString(String enteredCityName) {
+            StringBuffer stringBufferMetricRequest = new StringBuffer(WEATHER_URL + WEATHER_API_KEY);
+            return stringBufferMetricRequest.insert(47, enteredCityName).toString();
+        }
+    }
+
+
+
