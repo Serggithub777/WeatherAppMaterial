@@ -1,6 +1,4 @@
 package com.example.weatherappmaterial;
-
-import android.app.Fragment;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -9,7 +7,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
+
 
 import android.view.View;
 import android.view.Menu;
@@ -18,6 +16,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
     private View view;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
