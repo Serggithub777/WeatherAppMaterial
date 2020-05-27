@@ -14,9 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FragmentDialogResult {
     private View view;
-
+    StartFragmentDialog startFragmentDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
     }
-        //NavHostFragment.findNavController(WeatherFragment.this).navigate(R.id.action_weatherFragment_to_startFragment);
+
+    @Override
+    public void onDialogResult(String result) {
+
+    }
+    //NavHostFragment.findNavController(WeatherFragment.this).navigate(R.id.action_weatherFragment_to_startFragment);
 
 }

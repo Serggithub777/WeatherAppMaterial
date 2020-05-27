@@ -33,4 +33,8 @@
     <string name="textViewPlusTemp">+</string>
     <string name="dayOfWeek">day</string>
     <string name="textDate">date</string>
+    <string name="title_dialog">City not found!</string>
+    <string name="message_dialog">Enter city name again!</string>
+    <string name="ok_button_dialog">OK</string>
+
 </resources>
