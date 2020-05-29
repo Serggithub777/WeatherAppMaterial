@@ -58,9 +58,15 @@ public class StartFragment extends Fragment {
         clickListenerShowWeather = new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+
                 String cityName = enteredCityName.getText().toString().trim();
-                requesterApi = new RequesterApi();
-                String result = requesterApi.doApiRequest(cityName);
+                RequesterApi requesterApi = new RequesterApi(new RequesterApi.RequesterApiListener() {
+                    @Override
+                    public void onFinish(String result) {
+                        //Use result
+                    }
+                });
+                requesterApi.doApiRequest(cityName);
                 try {
                 if (cityName.isEmpty()) {
                     createToast("Enter city name!");
