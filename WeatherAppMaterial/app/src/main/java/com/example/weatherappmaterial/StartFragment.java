@@ -59,27 +59,28 @@ public class StartFragment extends Fragment {
             @Override
             public void onClick(final View view) {
                 String cityName = enteredCityName.getText().toString().trim();
+                if (cityName.isEmpty()) {
+                     createToast("Enter city name!");
+                } else {
+                    RequesterApi requesterApi = new RequesterApi(new RequesterApi.RequesterApiListener() {
+                        @Override
+                        public void onFinish(String result) {
 
-                RequesterApi requesterApi = new RequesterApi(new RequesterApi.RequesterApiListener() {
-                    @Override
-                    public void onFinish(String result) {
-                        //Use result
-                        if (result.equals(failResponse)) {
-                            startFragmentDialog = new StartFragmentDialog();
-                            startFragmentDialog.show(getParentFragmentManager(),"startFragmentDialog");
+                            if (result.equals(failResponse)) {
+                                startFragmentDialog = new StartFragmentDialog();
+                                startFragmentDialog.show(getParentFragmentManager(), "startFragmentDialog");
+                            } else {
+                                Bundle args = new Bundle();
+                                args.putString("ResultRequest", result);
+                                Navigation.findNavController(view).navigate(R.id.action_startFragment_to_weatherFragment, args);
+                            }
                         }
-                        else {
-                            Bundle args = new Bundle();
-                            args.putString("ResultRequest", result);
-                            Navigation.findNavController(view).navigate(R.id.action_startFragment_to_weatherFragment, args);
-                        }
-                    }
-                });
-                requesterApi.setRequesterApiListener(cityName);
+                    });
+                    requesterApi.setRequesterApiListener(cityName);
+                }
             }
         };
     }
-
     private void initListRecentCities(LinearLayout viewRecentCitiesLinearLayout) {
         String[] recentCities = getResources().getStringArray(R.array.recentCities);
         LayoutInflater layoutInflater = getLayoutInflater();

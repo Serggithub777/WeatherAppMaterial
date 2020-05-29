@@ -1,12 +1,8 @@
 package com.example.weatherappmaterial;
 
-import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-import android.widget.Toast;
-
-import androidx.annotation.RequiresApi;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -15,7 +11,7 @@ import java.net.URL;
 import java.util.stream.Collectors;
 
 
-public class RequesterApi {
+class RequesterApi {
     private static final String WEATHER_URL = "https://api.openweathermap.org/data/2.5/find?q=&units=metric&appid=";
     private static final String WEATHER_API_KEY = "1186203397d0695eb17fe6d368432737";
     private static final String TAG = "WEATHER";
@@ -26,11 +22,11 @@ public class RequesterApi {
         void onFinish(String result);
     }
 
-    public RequesterApi(RequesterApiListener requesterApiListener) {
+    RequesterApi(RequesterApiListener requesterApiListener) {
         this.requesterApiListener = requesterApiListener;
     }
 
-    public void setRequesterApiListener(final String cityName) {
+    void setRequesterApiListener(final String cityName) {
         final Handler handler  = new Handler(Looper.myLooper());
         new Thread(new Runnable() {
             @Override
@@ -47,7 +43,7 @@ public class RequesterApi {
     }
 
 
-    public String doApiRequest(String cityName) {
+    private String doApiRequest(String cityName) {
         String request = createRequestString(cityName);
 
         try{
