@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment;
 import com.example.weatherappmaterial.data.Weather;
 import com.example.weatherappmaterial.data.WeatherRequest;
 
+import java.util.List;
+import java.util.WeakHashMap;
+
 public class WeatherFragment extends Fragment {
       private final static String m24 = "k:mm";
       private TextView textViewCityName;
@@ -22,12 +25,12 @@ public class WeatherFragment extends Fragment {
       private TextView textViewHumidityValue;
       private TextView textViewWindValue;
       private TextView textViewTime;
-      private ApiDataHandler apiDataHandler;
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
+
     ) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_weather, container, false);
@@ -35,15 +38,12 @@ public class WeatherFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (getArguments() != null) {
-            String resultRequest = getArguments().getString("ResultRequest");
-            apiDataHandler = new ApiDataHandler(resultRequest);
-            WeatherRequest [] weatherRequest = apiDataHandler.getWeatherRequests();
+            WeatherRequest weatherRequest = DataHolder.getInstance().getResultRequest();
             dataSetting(view, weatherRequest);
         }
-}
 
-    private void dataSetting(@NonNull View view, WeatherRequest[] weatherRequest) {
+
+    private void dataSetting(@NonNull View view, WeatherRequest weatherRequest) {
         textViewCityName = view.findViewById(R.id.textViewCityName);
         setCityName(textViewCityName, weatherRequest);
         textViewTextWeatherIcon = view.findViewById(R.id.textViewTextWeatherIcon);
@@ -59,20 +59,20 @@ public class WeatherFragment extends Fragment {
         setWindSpeed(textViewWindValue, weatherRequest);
     }
 
-    private void setWindSpeed(TextView textViewWindValue, WeatherRequest[] weatherRequest) {
-        float windValue = weatherRequest[0].getWind().getSpeed();
+    private void setWindSpeed(TextView textViewWindValue, WeatherRequest weatherRequest) {
+        float windValue = weatherRequest.getWind().getSpeed();
         String textWindValue = String.valueOf(windValue);
         textViewWindValue.setText(textWindValue);
    }
 
-    private void setHumidity(TextView textViewHumidityValue, WeatherRequest[] weatherRequest) {
-        int humidityValue = weatherRequest[0].getMain().getHumidity();
+    private void setHumidity(TextView textViewHumidityValue, WeatherRequest weatherRequest) {
+        int humidityValue = weatherRequest.getMain().getHumidity();
         String textHumidityValue = String.valueOf(humidityValue);
         textViewHumidityValue.setText(textHumidityValue);
     }
 
-    private void setTemperature(TextView textViewItemTemperature, WeatherRequest[] weatherRequest) {
-        float temperatureValue = weatherRequest[0].getMain().getTemp();
+    private void setTemperature(TextView textViewItemTemperature, WeatherRequest weatherRequest) {
+        float temperatureValue = weatherRequest.getMain().getTemp();
         String textTemperatureValue = String.valueOf(temperatureValue);
         if (temperatureValue > 0) {
             textViewItemTemperature.setText(textTemperatureValue);
@@ -82,21 +82,20 @@ public class WeatherFragment extends Fragment {
         }
     }
 
-    private void setTextWeatherIcon(TextView textViewTextWeatherIcon, WeatherRequest[] weatherRequest) {
-        Weather[] weather = weatherRequest[0].getWeatherList();
-        String textWeatherIcon = weather[0].getDescription();
-        textViewTextWeatherIcon.setText(textWeatherIcon);
+    private void setTextWeatherIcon(TextView textViewTextWeatherIcon, WeatherRequest weatherRequest) {
+        Weather weather = weatherRequest.getWeather().get(0);
+        textViewTextWeatherIcon.setText(weather.getDescription());
     }
 
 
-    private void setPressure(TextView textViewPresureValue, WeatherRequest[] weatherRequest) {
-        int pressureValue = weatherRequest[0].getMain().getPressure();
+    private void setPressure(TextView textViewPresureValue, WeatherRequest weatherRequest) {
+        int pressureValue = weatherRequest.getMain().getPressure();
         textViewPresureValue.setText(String.valueOf(pressureValue));
 
     }
 
-    private void setCityName(TextView textViewCityName, WeatherRequest[] weatherRequest) {
-        textViewCityName.setText(weatherRequest[0].getName());
+    private void setCityName(TextView textViewCityName, WeatherRequest weatherRequest) {
+        textViewCityName.setText(weatherRequest.getName());
     }
 
     private void setWeatherIcon() {

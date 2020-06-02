@@ -1,6 +1,5 @@
 package com.example.weatherappmaterial;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,14 +13,17 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.example.weatherappmaterial.data.WeatherRequest;
 import com.google.android.material.textfield.TextInputEditText;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.stream.Collectors;
 
-import javax.net.ssl.HttpsURLConnection;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class StartFragment extends Fragment {
     private static final String TAG = "WEATHER";
@@ -31,9 +33,9 @@ public class StartFragment extends Fragment {
     private Button buttonShowWeather;
     private View.OnClickListener clickListenerShowWeather;
     private TextInputEditText editText;
-    private final String failResponse = "{\"message\":\"accurate\",\"cod\":\"200\",\"count\":0,\"list\":[]}";
-    private RequesterApi requesterApi;
+    private OpenWeather openWeather;
     private  StartFragmentDialog startFragmentDialog;
+    private WeatherRequest resultRequest;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +46,7 @@ public class StartFragment extends Fragment {
         buttonShowWeather = activityFragmentStart.findViewById(R.id.buttonShowWeather);
         onClickListenerShowWeather();
         buttonShowWeather.setOnClickListener(clickListenerShowWeather);
+        openWeather = RequesterApi.getApi();
         return activityFragmentStart;
     }
 
@@ -55,32 +58,45 @@ public class StartFragment extends Fragment {
     }
 
     private void onClickListenerShowWeather() {
-        clickListenerShowWeather = new View.OnClickListener() {
-            @Override
-            public void onClick(final View view) {
-                String cityName = enteredCityName.getText().toString().trim();
-                if (cityName.isEmpty()) {
-                     createToast("Enter city name!");
-                } else {
-                    RequesterApi requesterApi = new RequesterApi(new RequesterApi.RequesterApiListener() {
-                        @Override
-                        public void onFinish(String result) {
+        clickListenerShowWeather = view -> {
+            String cityName = enteredCityName.getText().toString().trim();
 
-                            if (result.equals(failResponse)) {
+            if (cityName.isEmpty()) {
+                createToast("Enter city name!");
+            } else {
+                openWeather.loadWeather(cityName, "metric", WEATHER_API_KEY).enqueue(new Callback<WeatherRequest>() {
+                    @Override
+                    public void onResponse(Call<WeatherRequest> call, Response<WeatherRequest> response) {
+                        if (response.body() != null && response.isSuccessful()) {
+                            WeatherRequest resultRequest = response.body();
+                            DataHolder.getInstance().setResultRequest(resultRequest);
+                            Navigation.findNavController(view).navigate(R.id.action_startFragment_to_weatherFragment);
+                        }
+                        if (!response.isSuccessful()&& response.errorBody()!=null) {
+                            try {
+                                JSONObject jsonError = new JSONObject(response.errorBody().string());
+                                String error = jsonError.getString("message");
+                                Toast.makeText(getContext(),error,Toast.LENGTH_SHORT).show();
                                 startFragmentDialog = new StartFragmentDialog();
                                 startFragmentDialog.show(getParentFragmentManager(), "startFragmentDialog");
-                            } else {
-                                Bundle args = new Bundle();
-                                args.putString("ResultRequest", result);
-                                Navigation.findNavController(view).navigate(R.id.action_startFragment_to_weatherFragment, args);
+                            } catch (JSONException | IOException e) {
+                                e.printStackTrace();
                             }
                         }
-                    });
-                    requesterApi.setRequesterApiListener(cityName);
-                }
-            }
-        };
-    }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<WeatherRequest> call, Throwable t){
+
+                        }
+
+            });
+         }
+    };
+}
+
+
     private void initListRecentCities(LinearLayout viewRecentCitiesLinearLayout) {
         String[] recentCities = getResources().getStringArray(R.array.recentCities);
         LayoutInflater layoutInflater = getLayoutInflater();
@@ -103,16 +119,12 @@ public class StartFragment extends Fragment {
             });
         }
     }
-    private String createRequestString(String enteredCityName) {
-            StringBuffer stringBufferMetricRequest = new StringBuffer(WEATHER_URL + WEATHER_API_KEY);
-            return stringBufferMetricRequest.insert(47, enteredCityName).toString();
-        }
 
     public void createToast(String msg) {
         Log.d(TAG, msg);
         Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
     }
-    }
+ }
 
 
 
