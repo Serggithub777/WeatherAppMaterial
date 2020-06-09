@@ -58,29 +58,69 @@ public class StartFragment extends Fragment {
         clickListenerShowWeather = new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                String cityName = enteredCityName.getText().toString().trim();
-                if (cityName.isEmpty()) {
-                     createToast("Enter city name!");
-                } else {
-                    RequesterApi requesterApi = new RequesterApi(new RequesterApi.RequesterApiListener() {
-                        @Override
-                        public void onFinish(String result) {
 
-                            if (result.equals(failResponse)) {
-                                startFragmentDialog = new StartFragmentDialog();
-                                startFragmentDialog.show(getParentFragmentManager(), "startFragmentDialog");
-                            } else {
-                                Bundle args = new Bundle();
-                                args.putString("ResultRequest", result);
-                                Navigation.findNavController(view).navigate(R.id.action_startFragment_to_weatherFragment, args);
+                String cityName = enteredCityName.getText().toString().trim();
+                RequesterApi requesterApi = new RequesterApi(new RequesterApi.RequesterApiListener() {
+                    @Override
+                    public void onFinish(String result) {
+                        //Use result
+                    }
+                });
+                requesterApi.doApiRequest(cityName);
+                try {
+                if (cityName.isEmpty()) {
+                    createToast("Enter city name!");
+                } else {
+                        String request = createRequestString(cityName);
+                        final URL uri = new URL(request);
+                        final Handler handler = new Handler();
+
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                HttpsURLConnection urlConnection = null;
+                                try {
+                                    urlConnection = (HttpsURLConnection) uri.openConnection();
+                                    urlConnection.setRequestMethod("GET");
+                                    urlConnection.setReadTimeout(10000);
+                                    BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                                    final String resultRequest = getLines(reader);
+                                    handler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if (resultRequest.equals(failResponse)) {
+                                                startFragmentDialog = new StartFragmentDialog();
+                                                startFragmentDialog.show(getParentFragmentManager(),"startFragmentDialog");
+                                            }
+                                            else {
+                                                Bundle args = new Bundle();
+                                                args.putString("ResultRequest", resultRequest);
+                                                Navigation.findNavController(view).navigate(R.id.action_startFragment_to_weatherFragment, args);
+                                            }
+                                        }
+                                     });
+                                } catch (Exception e) {
+                                    Log.e(TAG, "Fail connection", e);
+                                    e.printStackTrace();
+                                } finally {
+                                    if (null != urlConnection) {
+                                        urlConnection.disconnect();
+                                    }
+                                }
                             }
-                        }
-                    });
-                    requesterApi.setRequesterApiListener(cityName);
+                        }).start();
+                    }
+                    }catch (MalformedURLException e) {
+                    Log.e(TAG, "Fail URI", e);
+                    e.printStackTrace();
                 }
+            }
+            private String getLines(BufferedReader reader) {
+                return reader.lines().collect(Collectors.joining("\n"));
             }
         };
     }
+
     private void initListRecentCities(LinearLayout viewRecentCitiesLinearLayout) {
         String[] recentCities = getResources().getStringArray(R.array.recentCities);
         LayoutInflater layoutInflater = getLayoutInflater();

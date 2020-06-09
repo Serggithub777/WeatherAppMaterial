@@ -11,6 +11,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.weatherappmaterial.data.Weather;
 import com.example.weatherappmaterial.data.WeatherRequest;
+import com.example.weatherappmaterial.data.WeatherRequestList;
+import com.google.gson.Gson;
+
 
 public class WeatherFragment extends Fragment {
       private final static String m24 = "k:mm";
@@ -22,7 +25,6 @@ public class WeatherFragment extends Fragment {
       private TextView textViewHumidityValue;
       private TextView textViewWindValue;
       private TextView textViewTime;
-      private ApiDataHandler apiDataHandler;
 
     @Override
     public View onCreateView(
@@ -37,8 +39,9 @@ public class WeatherFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         if (getArguments() != null) {
             String resultRequest = getArguments().getString("ResultRequest");
-            apiDataHandler = new ApiDataHandler(resultRequest);
-            WeatherRequest [] weatherRequest = apiDataHandler.getWeatherRequests();
+            Gson gson = new Gson();
+            final WeatherRequestList weatherRequestList = gson.fromJson(resultRequest, WeatherRequestList.class);
+            WeatherRequest [] weatherRequest = weatherRequestList.getList();
             dataSetting(view, weatherRequest);
         }
 }
