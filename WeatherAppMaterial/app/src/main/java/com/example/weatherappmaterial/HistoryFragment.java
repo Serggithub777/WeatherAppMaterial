@@ -6,6 +6,7 @@ import android.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weatherappmaterial.dao.WeatherDao;
+import com.example.weatherappmaterial.model.WeatherHistory;
 
 public class HistoryFragment extends Fragment {
     private HistoryRecyclerAdapter adapter;
@@ -55,5 +57,23 @@ public class HistoryFragment extends Fragment {
 
     }
 
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
 
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.remove_context:
+                WeatherHistory weatherHistoryForRemove = weatherSource
+                        .getWeatherHistories()
+                        .get((int) adapter.getMenuPosition());
+               weatherSource.removeWeatherHistoryById(weatherHistoryForRemove.id);
+               adapter.notifyItemRemoved((int)adapter.getMenuPosition());
+               return true;
+            case R.id.clear_context:
+                weatherSource.removeAllWeatherHistories();
+                adapter.notifyDataSetChanged();
+        }
+
+        return super.onContextItemSelected(item);
+    }
 }

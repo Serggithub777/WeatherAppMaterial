@@ -32,5 +32,7 @@ public interface WeatherDao {
     @Query("select count() from weatherhistory")
     long getCountWeatherHistory();
 
+    @Query("delete from weatherhistory")
+    void delete();
 }
 

@@ -42,4 +42,10 @@ public class WeatherSource {
         loadWeatherHistories();
     }
 
+    public void removeAllWeatherHistories() {
+        weatherDao.delete();
+        loadWeatherHistories();
+    }
+
+
 }
