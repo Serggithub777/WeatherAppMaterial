@@ -39,6 +39,18 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecycler
     public void onBindViewHolder(@NonNull HistoryRecyclerAdapter.ViewHolder holder, int position) {
         List<WeatherHistory> weatherHistories = weatherSource.getWeatherHistories();
         WeatherHistory weatherHistory = weatherHistories.get(position);
+        holder.textRecyclerItemCityName.setText(weatherHistory.cityName);
+        holder.textRecyclerItemDate.setText(weatherHistory.date);
+        holder.textRecyclerItemTemp.setText(weatherHistory.temp);
+
+        holder.cardView.setOnLongClickListener(v -> {
+            menuPosition = position;
+            return false;
+        });
+
+        if (historyFragment != null) {
+            historyFragment.registerForContextMenu(holder.cardView);
+        }
 
     }
 
