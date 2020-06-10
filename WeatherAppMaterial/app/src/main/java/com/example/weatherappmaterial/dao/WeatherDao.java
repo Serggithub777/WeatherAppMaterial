@@ -20,6 +20,9 @@ public interface WeatherDao {
     @Delete
     void deleteWeatherHistory(WeatherHistory weatherHistory);
 
+    @Query("delete from weatherhistory where id = :id")
+    void deleteWeatherHistoryById(long id);
+
     @Query("select * from weatherhistory")
     List<WeatherHistory> getAllWeatherHistory();
 
