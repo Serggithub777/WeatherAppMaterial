@@ -56,6 +56,9 @@ public class MainActivity extends AppCompatActivity implements FragmentDialogRes
             Navigation.findNavController(view).navigate(R.id.settingsFragment);
             return true;
         }
+        if (id == R.id.historyFragment) {
+            Navigation.findNavController(view).navigate(R.id.historyFragment);
+        }
 
         return super.onOptionsItemSelected(item);
     }

@@ -40,8 +40,8 @@
     <string name="action_history">History</string>
     <string name="remove">Remove item</string>
     <string name="clearHistory">Clear history</string>
-    <string name="textViewRequestDate">request date</string>
+    <string name="textRecyclerItemDate">date</string>
     <string name="textRecyclerItemCityName">city</string>
-    <string name="textViewRequestTemp">temperature</string>
+    <string name="textRecyclerItemTemp">temperature</string>
 
 </resources>
