@@ -37,5 +37,6 @@
     <string name="message_dialog">Enter city name again!</string>
     <string name="ok_button_dialog">OK</string>
     <string name="textViewQueryHistory">query history:</string>
+    <string name="action_history">History</string>
 
 </resources>
