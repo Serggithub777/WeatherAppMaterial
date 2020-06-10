@@ -34,10 +34,12 @@ public class WeatherSource {
 
     public void addWeatherHistory(WeatherHistory weatherHistory) {
         weatherDao.insertWeatherHistory(weatherHistory);
+        loadWeatherHistories();
     }
 
-    public void removeWeatherHistory(long id) {
+    public void removeWeatherHistoryById(long id) {
         weatherDao.deleteWeatherHistoryById(id);
+        loadWeatherHistories();
     }
 
 }

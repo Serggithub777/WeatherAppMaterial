@@ -1,5 +1,6 @@
 package com.example.weatherappmaterial.dao;
 
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -10,7 +11,9 @@ import com.example.weatherappmaterial.model.WeatherHistory;
 
 import java.util.List;
 
+@Dao
 public interface WeatherDao {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertWeatherHistory(WeatherHistory weatherHistory);
 
@@ -23,10 +26,11 @@ public interface WeatherDao {
     @Query("delete from weatherhistory where id = :id")
     void deleteWeatherHistoryById(long id);
 
-    @Query("select * from weatherhistory")
+    @Query ("select * from weatherhistory")
     List<WeatherHistory> getAllWeatherHistory();
 
     @Query("select count() from weatherhistory")
     long getCountWeatherHistory();
 
 }
+
