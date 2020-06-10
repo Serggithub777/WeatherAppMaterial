@@ -9,8 +9,8 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/historyFragment"
-        android:orderInCategory="100"
+        android:id="@+id/historyFragment2"
+        android:orderInCategory="150"
         android:title="@string/action_history"
         app:showAsAction="never" />
 </menu>

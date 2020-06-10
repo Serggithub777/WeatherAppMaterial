@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_startFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_historyFragment"
+            app:destination="@id/historyFragment2" />
     </fragment>
     <fragment
         android:id="@+id/weatherFragment"
@@ -36,6 +39,14 @@
         tools:layout="@layout/fragment_settings" >
         <action
             android:id="@+id/action_settingsFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment2"
+        android:name="com.example.weatherappmaterial.HistoryFragment"
+        android:label="HistoryFragment" >
+        <action
+            android:id="@+id/action_historyFragment_to_startFragment"
             app:destination="@id/startFragment" />
     </fragment>
 </navigation>
