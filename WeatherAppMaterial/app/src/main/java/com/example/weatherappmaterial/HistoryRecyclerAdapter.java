@@ -59,6 +59,10 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecycler
         return (int) weatherSource.getCountWeatherHistories();
     }
 
+    public long getMenuPosition() {
+        return menuPosition;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView textRecyclerItemCityName;
         TextView textRecyclerItemDate;
