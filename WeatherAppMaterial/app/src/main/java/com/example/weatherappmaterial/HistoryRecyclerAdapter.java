@@ -56,7 +56,7 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecycler
 
     @Override
     public int getItemCount() {
-        return 0;
+        return (int) weatherSource.getCountWeatherHistories();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
