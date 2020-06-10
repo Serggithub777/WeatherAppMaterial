@@ -39,8 +39,9 @@ public class WeatherFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         WeatherRequest weatherRequest = DataHolder.getInstance().getResultRequest();
         dataSetting(view, weatherRequest);
+        WeatherHistoryCreator weatherHistoryCreator = new WeatherHistoryCreator();
+        weatherHistoryCreator.addNdrWeatherHistory();
     }
-
 
     private void dataSetting(@NonNull View view, WeatherRequest weatherRequest) {
         textViewCityName = view.findViewById(R.id.textViewCityName);
