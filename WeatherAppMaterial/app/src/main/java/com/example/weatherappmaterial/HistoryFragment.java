@@ -2,7 +2,10 @@ package com.example.weatherappmaterial;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.ActionMode;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -43,4 +46,14 @@ public class HistoryFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
     }
+
+    @Override
+    public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = new MenuInflater(getContext());
+        inflater.inflate(R.menu.history_recycler_context_menu, menu);
+
+    }
+
+
 }
