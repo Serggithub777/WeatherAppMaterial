@@ -18,10 +18,12 @@ public class MainActivity extends AppCompatActivity implements FragmentDialogRes
     private View view;
     StartFragmentDialog startFragmentDialog;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         view = findViewById(R.id.nav_host_fragment);
@@ -33,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements FragmentDialogRes
                         .setAction("Action", null).show();
             }
         });
-
     }
 
     @Override

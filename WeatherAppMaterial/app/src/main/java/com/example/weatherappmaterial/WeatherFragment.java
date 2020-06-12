@@ -1,10 +1,13 @@
 package com.example.weatherappmaterial;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,13 +27,14 @@ public class WeatherFragment extends Fragment {
     private TextView textViewHumidityValue;
     private TextView textViewWindValue;
     private TextView textViewTime;
+    public static final String SETTINGS_SWITCH_PRESSURE = "switch_pressure";
+    SharedPreferences settingsShowAdditional;
+    boolean pressureVisible;
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-
-    ) {
+            Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_weather, container, false);
     }

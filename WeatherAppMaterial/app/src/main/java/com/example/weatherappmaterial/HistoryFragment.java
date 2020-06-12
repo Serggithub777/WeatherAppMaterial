@@ -72,6 +72,7 @@ public class HistoryFragment extends Fragment {
             case R.id.clear_context:
                 weatherSource.removeAllWeatherHistories();
                 adapter.notifyDataSetChanged();
+                return true;
         }
 
         return super.onContextItemSelected(item);

@@ -43,5 +43,6 @@
     <string name="textRecyclerItemDate">date</string>
     <string name="textRecyclerItemCityName">city</string>
     <string name="textRecyclerItemTemp">temperature</string>
+    <string name="textClock">time</string>
 
 </resources>

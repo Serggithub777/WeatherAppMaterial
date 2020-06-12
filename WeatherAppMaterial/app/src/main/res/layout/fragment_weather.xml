@@ -188,46 +188,46 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewHumidityValue"
         app:layout_constraintStart_toEndOf="@+id/textViewHumidityValue" />
 
-    <TextClock
-        android:id="@+id/textClock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="12dp"
-        android:format12Hour="HH : mm"
-        android:format24Hour="HH : mm"
-        android:inputType="time"
-        android:text="time"
-        android:textSize="42sp"
-        app:layout_constraintStart_toEndOf="@+id/imageViewWeatherIcon"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCityName" />
+<!--    <TextClock-->
+<!--        android:id="@+id/textClock"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="52dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:format12Hour="HH : mm"-->
+<!--        android:format24Hour="HH : mm"-->
+<!--        android:inputType="time"-->
+<!--        android:text="@string/textClock"-->
+<!--        android:textSize="42sp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/imageViewWeatherIcon"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textViewCityName" />-->
 
-    <TextClock
-        android:id="@+id/textDayOfWeek"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:format12Hour="EEEE"
-        android:format24Hour="EEEE"
-        android:text="@string/dayOfWeek"
-        android:inputType="date"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/textClock"
-        app:layout_constraintTop_toBottomOf="@+id/textClock"
-        tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="110dp" />
+<!--    <TextClock-->
+<!--        android:id="@+id/textDayOfWeek"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:format12Hour="EEEE"-->
+<!--        android:format24Hour="EEEE"-->
+<!--        android:text="@string/dayOfWeek"-->
+<!--        android:inputType="date"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/textClock"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textClock"-->
+<!--        tools:layout_editor_absoluteX="236dp"-->
+<!--        tools:layout_editor_absoluteY="110dp" />-->
 
-    <TextClock
-        android:id="@+id/textDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:format12Hour="dd MMMM yyyy"
-        android:format24Hour="dd MMMM yyyy"
-        android:text="@string/textDate"
-        android:inputType="date"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/textDayOfWeek"
-        app:layout_constraintTop_toBottomOf="@+id/textDayOfWeek"
-        tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="110dp" />
+<!--    <TextClock-->
+<!--        android:id="@+id/textDate"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:format12Hour="dd MMMM yyyy"-->
+<!--        android:format24Hour="dd MMMM yyyy"-->
+<!--        android:text="@string/textDate"-->
+<!--        android:inputType="date"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/textDayOfWeek"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textDayOfWeek"-->
+<!--        tools:layout_editor_absoluteX="236dp"-->
+<!--        tools:layout_editor_absoluteY="110dp" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
