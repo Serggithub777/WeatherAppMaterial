@@ -104,8 +104,9 @@ public class SettingsFragment extends Fragment {
                SharedPreferences.Editor editor = settingsShowAdditional.edit();
                editor.putBoolean(SETTINGS_SWITCH_PRESSURE, isChecked);
                editor.apply();
-               String msg = String.valueOf(isChecked);
-               createToast(msg);
+               if (isChecked) {
+                   createToast("air pressure is displayed");
+               } else  createToast("air pressure is not displayed");
             }
        });
 
@@ -115,8 +116,9 @@ public class SettingsFragment extends Fragment {
                SharedPreferences.Editor editor = settingsShowAdditional.edit();
                editor.putBoolean(SETTINGS_SWITCH_HUMIDITY, isChecked);
                editor.apply();
-               String msg = String.valueOf(isChecked);
-               createToast(msg);
+               if (isChecked) {
+                   createToast("humidity is displayed");
+               } else  createToast("humidity is not displayed");
 
            }
        });
@@ -127,8 +129,10 @@ public class SettingsFragment extends Fragment {
                SharedPreferences.Editor editor = settingsShowAdditional.edit();
                editor.putBoolean(SETTINGS_SWITCH_WIND, isChecked);
                editor.apply();
-               String msg = String.valueOf(isChecked);
-               createToast(msg);
+               if (isChecked) {
+                   createToast("wind speed is displayed");
+               } else  createToast("wind speed is not displayed");
+
            }
        });
 
