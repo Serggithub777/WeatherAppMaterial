@@ -1,7 +1,6 @@
 package com.example.weatherappmaterial;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -14,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -25,15 +26,25 @@ import static android.content.Context.MODE_PRIVATE;
  */
 public class SettingsFragment extends Fragment {
     private static final String TAG = "WEATHER";
+    public static final String SHARED_PREF_ADD_SHOW = "show_additional_prefer";
     public static final String SETTINGS_SWITCH_PRESSURE = "switch_pressure";
     public static final String SETTINGS_SWITCH_HUMIDITY = "switch_humidity";
     public static final String SETTINGS_SWITCH_WIND = "switch_wind";
-    public static final String SHARED_PREF_ADD_SHOW = "show_additional_prefer";
+
+    public static final String SHARED_PREF_THEME = "light_dark_theme_prefer";
+    public static final String SETTINGS_SWITCH_THEME = "switch_theme";
+
+    public static final String SHARED_PREF_TEMP_MESUR = "temp_mesure_pref";
+    public static final String TEMP_RADIOBUTTON_INDEX = "temp_radiobutton_index";
     // Required empty public constructor
     SharedPreferences settingsShowAdditional;
+    SharedPreferences settingsTheme;
+    SharedPreferences settingsTempMesur;
     Switch switchShowAirPressure;
     Switch switchShowHumidity;
     Switch switchShowWindSpeed;
+    Switch switchDarkLightTheme;
+    RadioGroup radioGroupSetTempMesur;
 
 
     public SettingsFragment() {
@@ -44,9 +55,6 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
-
         // Inflate the layout for this fragment
         //initSwitchesListeners(settingsShowAdditional);
         return inflater.inflate(R.layout.fragment_settings, container, false);
@@ -59,9 +67,33 @@ public class SettingsFragment extends Fragment {
         if (settingsShowAdditional!=null){
             loadSwitchesPreferences(view, settingsShowAdditional);
         }
+        SharedPreferences settingsTheme = requireContext().getSharedPreferences(SHARED_PREF_THEME, MODE_PRIVATE);
+        if (settingsTheme != null) {
+            loadThemePreferences(view, settingsTheme);
+        }
+        SharedPreferences settingsTempMesur = requireContext().getSharedPreferences(SHARED_PREF_TEMP_MESUR, MODE_PRIVATE);
+        if (settingsTempMesur != null) {
+            loadTempMesurPreferences(view, settingsTempMesur);
+        }
         initializeSwitches(view);
         initSwitchListeners();
 
+    }
+
+    private void loadTempMesurPreferences(View view, SharedPreferences settingsTempMesur) {
+        radioGroupSetTempMesur = view.findViewById(R.id.radioGroupSetTempMesur);
+        int saveRadioButtonIndex = settingsTempMesur.getInt(TEMP_RADIOBUTTON_INDEX, 0);
+        RadioButton savedCheckedRadiobutton = (RadioButton) radioGroupSetTempMesur.getChildAt(saveRadioButtonIndex);
+        savedCheckedRadiobutton.setChecked(true);
+
+    }
+
+    private void loadThemePreferences(View view, SharedPreferences settingsTheme) {
+        boolean themeSwitch = settingsTheme.getBoolean(SETTINGS_SWITCH_THEME, false);
+        switchDarkLightTheme = view.findViewById(R.id.switchDarkLigthTheme);
+        if (themeSwitch) {
+            switchDarkLightTheme.setChecked(true);
+        }
     }
 
     private void loadSwitchesPreferences(@NonNull View view, SharedPreferences settingsShowAdditional) {
@@ -73,18 +105,12 @@ public class SettingsFragment extends Fragment {
         switchShowWindSpeed = view.findViewById(R.id.switchShowWindSpeed);
         if (airPressureSwitch) {
             switchShowAirPressure.setChecked(true);
-            String msg = String.valueOf(airPressureSwitch);
-            createToast(msg);
         }
         if (humiditySwitch) {
             switchShowHumidity.setChecked(true);
-            String msg = String.valueOf(humiditySwitch);
-            createToast(msg);
         }
         if (windSpeedSwitch) {
             switchShowWindSpeed.setChecked(true);
-            String msg = String.valueOf(windSpeedSwitch);
-            createToast(msg);
         }
 
 
@@ -94,6 +120,8 @@ public class SettingsFragment extends Fragment {
         switchShowAirPressure = view.findViewById(R.id.switchShowAirPressure);
         switchShowHumidity = view.findViewById(R.id.switchShowHumidity);
         switchShowWindSpeed = view.findViewById(R.id.switchShowWindSpeed);
+        switchDarkLightTheme = view.findViewById(R.id.switchDarkLigthTheme);
+        radioGroupSetTempMesur = view.findViewById(R.id.radioGroupSetTempMesur);
     }
 
     private void initSwitchListeners() {
@@ -135,7 +163,30 @@ public class SettingsFragment extends Fragment {
 
            }
        });
+       settingsTheme = requireContext().getSharedPreferences(SHARED_PREF_THEME, MODE_PRIVATE);
+       switchDarkLightTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+           @Override
+           public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+               SharedPreferences.Editor editor = settingsTheme.edit();
+               editor.putBoolean(SETTINGS_SWITCH_THEME, isChecked);
+               editor.apply();
+               if (isChecked) {
+                   createToast("dark theme set");
+               } else  createToast("light theme set");
+           }
+       });
 
+        settingsTempMesur = requireContext().getSharedPreferences(SHARED_PREF_TEMP_MESUR, MODE_PRIVATE);
+        radioGroupSetTempMesur.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton checkedRadioButton = radioGroupSetTempMesur.findViewById(checkedId);
+                int checkedIndex = radioGroupSetTempMesur.indexOfChild(checkedRadioButton);
+                SharedPreferences.Editor editor = settingsTempMesur.edit();
+                editor.putInt(TEMP_RADIOBUTTON_INDEX, checkedIndex);
+                editor.apply();
+            }
+        });
     }
 
     public void createToast(String msg) {
