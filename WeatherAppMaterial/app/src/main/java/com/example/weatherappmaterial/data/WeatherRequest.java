@@ -20,7 +20,7 @@ public class WeatherRequest {
     private Main main;
     @SerializedName("visibility")
     @Expose
-    private Integer visibility;
+    private int visibility;
     @SerializedName("wind")
     @Expose
     private Wind wind;
@@ -29,22 +29,22 @@ public class WeatherRequest {
     private Clouds clouds;
     @SerializedName("dt")
     @Expose
-    private Integer dt;
+    private int dt;
     @SerializedName("sys")
     @Expose
     private Sys sys;
     @SerializedName("timezone")
     @Expose
-    private Integer timezone;
+    private int timezone;
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private int id;
     @SerializedName("name")
     @Expose
     private String name;
     @SerializedName("cod")
     @Expose
-    private Integer cod;
+    private int cod;
 
     public Coord getCoord() {
         return coord;
@@ -78,7 +78,7 @@ public class WeatherRequest {
         this.main = main;
     }
 
-    public Integer getVisibility() {
+    public int getVisibility() {
         return visibility;
     }
 
@@ -102,7 +102,7 @@ public class WeatherRequest {
         this.clouds = clouds;
     }
 
-    public Integer getDt() {
+    public int getDt() {
         return dt;
     }
 
@@ -126,7 +126,7 @@ public class WeatherRequest {
         this.timezone = timezone;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
@@ -142,7 +142,7 @@ public class WeatherRequest {
         this.name = name;
     }
 
-    public Integer getCod() {
+    public int getCod() {
         return cod;
     }
 

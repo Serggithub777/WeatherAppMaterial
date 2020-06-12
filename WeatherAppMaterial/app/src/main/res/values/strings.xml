@@ -44,5 +44,6 @@
     <string name="textRecyclerItemCityName">city</string>
     <string name="textRecyclerItemTemp">temperature</string>
     <string name="textClock">time</string>
+    <string name="add_to_recent_cities">Add to recent cities</string>
 
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/add_to_recent_cities" android:id="@+id/add_to_recent_cities"/>
     <item android:title="@string/remove" android:id="@+id/remove_context"/>
     <item android:title="@string/clearHistory" android:id="@+id/clear_context"/>
 </menu>

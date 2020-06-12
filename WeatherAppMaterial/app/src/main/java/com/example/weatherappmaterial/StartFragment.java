@@ -27,7 +27,7 @@ import retrofit2.Response;
 
 public class StartFragment extends Fragment {
     private static final String TAG = "WEATHER";
-    private static final String WEATHER_URL = "https://api.openweathermap.org/data/2.5/find?q=&units=metric&appid=";
+    private static final String WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?q=&units=metric&appid=";
     private static final String WEATHER_API_KEY = "1186203397d0695eb17fe6d368432737";
     TextInputEditText enteredCityName;
     private Button buttonShowWeather;

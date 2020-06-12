@@ -98,6 +98,7 @@
         android:text="@string/switchShowWindSpeed"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/textViewHumidity"
         app:layout_constraintTop_toBottomOf="@+id/textViewHumidity" />
 
@@ -108,6 +109,7 @@
         android:text="@string/switchShowAirPressure"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/textViewItemTemperature"
         app:layout_constraintTop_toBottomOf="@+id/textViewItemTemperature" />
 
@@ -118,6 +120,7 @@
         android:text="@string/switchShowHumidity"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/textViewAirPressure"
         app:layout_constraintTop_toBottomOf="@+id/textViewAirPressure" />
 
@@ -129,6 +132,7 @@
         android:text="@string/textviewWindValue"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewWindSpeed"
         app:layout_constraintStart_toEndOf="@+id/textViewWindSpeed" />
 
@@ -140,6 +144,7 @@
         android:text="@string/textviewPressureValue"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewAirPressure"
         app:layout_constraintStart_toEndOf="@+id/textViewAirPressure" />
 
@@ -151,6 +156,7 @@
         android:text="@string/textviewHumidityValue"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewHumidity"
         app:layout_constraintStart_toEndOf="@+id/textViewHumidity" />
 
@@ -162,6 +168,7 @@
         android:text="@string/textviewWindSpeedMesur"
         android:textSize="14sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewWindValue"
         app:layout_constraintStart_toEndOf="@+id/textViewWindValue" />
 
@@ -173,6 +180,7 @@
         android:text="@string/textviewPressurMesur"
         android:textSize="14sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewPresureValue"
         app:layout_constraintStart_toEndOf="@+id/textViewPresureValue"
         tools:ignore="UnknownId" />
@@ -185,49 +193,50 @@
         android:text="@string/textviewHumidityyMesur"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintBaseline_toBaselineOf="@+id/textViewHumidityValue"
         app:layout_constraintStart_toEndOf="@+id/textViewHumidityValue" />
 
-<!--    <TextClock-->
-<!--        android:id="@+id/textClock"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="52dp"-->
-<!--        android:layout_marginTop="12dp"-->
-<!--        android:format12Hour="HH : mm"-->
-<!--        android:format24Hour="HH : mm"-->
-<!--        android:inputType="time"-->
-<!--        android:text="@string/textClock"-->
-<!--        android:textSize="42sp"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/imageViewWeatherIcon"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textViewCityName" />-->
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="12dp"
+        android:format12Hour="HH : mm"
+        android:format24Hour="HH : mm"
+        android:inputType="time"
+        android:text="@string/textClock"
+        android:textSize="42sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewWeatherIcon"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCityName" />
 
-<!--    <TextClock-->
-<!--        android:id="@+id/textDayOfWeek"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:format12Hour="EEEE"-->
-<!--        android:format24Hour="EEEE"-->
-<!--        android:text="@string/dayOfWeek"-->
-<!--        android:inputType="date"-->
-<!--        android:textSize="18sp"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/textClock"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textClock"-->
-<!--        tools:layout_editor_absoluteX="236dp"-->
-<!--        tools:layout_editor_absoluteY="110dp" />-->
+    <TextClock
+        android:id="@+id/textDayOfWeek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:format12Hour="EEEE"
+        android:format24Hour="EEEE"
+        android:text="@string/dayOfWeek"
+        android:inputType="date"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textClock"
+        app:layout_constraintTop_toBottomOf="@+id/textClock"
+        tools:layout_editor_absoluteX="236dp"
+        tools:layout_editor_absoluteY="110dp" />
 
-<!--    <TextClock-->
-<!--        android:id="@+id/textDate"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:format12Hour="dd MMMM yyyy"-->
-<!--        android:format24Hour="dd MMMM yyyy"-->
-<!--        android:text="@string/textDate"-->
-<!--        android:inputType="date"-->
-<!--        android:textSize="18sp"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/textDayOfWeek"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textDayOfWeek"-->
-<!--        tools:layout_editor_absoluteX="236dp"-->
-<!--        tools:layout_editor_absoluteY="110dp" />-->
+    <TextClock
+        android:id="@+id/textDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:format12Hour="dd MMMM yyyy"
+        android:format24Hour="dd MMMM yyyy"
+        android:text="@string/textDate"
+        android:inputType="date"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textDayOfWeek"
+        app:layout_constraintTop_toBottomOf="@+id/textDayOfWeek"
+        tools:layout_editor_absoluteX="236dp"
+        tools:layout_editor_absoluteY="110dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
