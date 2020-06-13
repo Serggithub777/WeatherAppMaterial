@@ -10,6 +10,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="14sp"
         android:text="@string/textViewRecentCityItem"
-        android:textColor="#000000"
+        android:textColor="#838383"
         android:textSize="20sp" />
 </FrameLayout>

@@ -1,31 +1,27 @@
 <resources>
+        <!-- Base application theme. -->
+        <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+            <!-- Customize your theme here. -->
+            <item name="colorPrimary">#5D5C5E</item>
+            <item name="colorPrimaryDark">#171F24</item>
+            <item name="colorAccent">@android:color/holo_orange_dark</item>
+        </style>
 
-    <!-- Base application theme. -->
-<!--    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
-<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
-<!--        <item name="colorPrimary">#D08048A8</item>-->
-<!--        <item name="colorPrimaryDark">#604A94</item>-->
-<!--        <item name="colorAccent">#A25CBE</item>-->
-<!--    </style>-->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-    </style>
+        <style name="AppTheme.NoActionBar">
+            <item name="windowActionBar">false</item>
+            <item name="windowNoTitle">true</item>
+        </style>
 
-    <style name="AppDarkTheme" parent="Theme.MaterialComponents"/>
+        <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
+        <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
+        <style name="DarkTheme" parent="Theme.AppCompat" >
+            <item name="colorAccent">@android:color/holo_orange_dark</item>
+            <item name="colorPrimaryDark">#171F24</item>
+            <item name="colorPrimary">#5D5C5E</item>
+            <item name="windowActionBar">false</item>
+        </style>
     <style name="ShowWeatherButton" parent="Theme.MaterialComponents">
         <item name="colorOnPrimary">@android:color/holo_red_light</item>
         <item name="colorPrimary">@android:color/holo_orange_dark</item>

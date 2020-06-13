@@ -1,11 +1,20 @@
 package com.example.weatherappmaterial;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.IntentCompat;
 import androidx.navigation.Navigation;
 
 
@@ -15,12 +24,23 @@ import android.view.MenuItem;
 
 
 public class MainActivity extends AppCompatActivity implements FragmentDialogResult {
+
+    public static final String SHARED_PREF_THEME = "light_dark_theme_prefer";
+    public static final String SETTINGS_SWITCH_THEME = "switch_theme";
     private View view;
     StartFragmentDialog startFragmentDialog;
-
+    SharedPreferences settingsTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        settingsTheme = getSharedPreferences(SHARED_PREF_THEME,MODE_PRIVATE);
+        boolean switchTheme = settingsTheme.getBoolean(SETTINGS_SWITCH_THEME, false);
+        if (switchTheme) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

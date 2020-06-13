@@ -1,5 +1,6 @@
 package com.example.weatherappmaterial;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weatherappmaterial.model.WeatherHistory;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecyclerAdapter.ViewHolder> {
@@ -35,14 +37,17 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecycler
         return vh;
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull HistoryRecyclerAdapter.ViewHolder holder, int position) {
         List<WeatherHistory> weatherHistories = weatherSource.getWeatherHistories();
         WeatherHistory weatherHistory = weatherHistories.get(position);
         holder.textRecyclerItemCityName.setText(weatherHistory.cityName);
         holder.textRecyclerItemDate.setText(weatherHistory.date);
-        holder.textRecyclerItemTemp.setText(weatherHistory.temp);
-
+        String temp = weatherHistory.temp;
+        if (!temp.contains("-")) {
+            holder.textRecyclerItemTemp.setText("+ " + temp);
+        } else holder.textRecyclerItemTemp.setText(temp);
         holder.cardView.setOnLongClickListener(v -> {
             menuPosition = position;
             return false;

@@ -1,6 +1,8 @@
 package com.example.weatherappmaterial;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -17,6 +19,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -165,6 +169,7 @@ public class SettingsFragment extends Fragment {
        });
        settingsTheme = requireContext().getSharedPreferences(SHARED_PREF_THEME, MODE_PRIVATE);
        switchDarkLightTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
            @Override
            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                SharedPreferences.Editor editor = settingsTheme.edit();
@@ -173,6 +178,7 @@ public class SettingsFragment extends Fragment {
                if (isChecked) {
                    createToast("dark theme set");
                } else  createToast("light theme set");
+               restart();
            }
        });
 
@@ -187,6 +193,14 @@ public class SettingsFragment extends Fragment {
                 editor.apply();
             }
         });
+    }
+
+    private void restart() {
+        Intent intent = getContext().getPackageManager().getLaunchIntentForPackage(
+                getContext().getPackageName() );
+        intent .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     public void createToast(String msg) {

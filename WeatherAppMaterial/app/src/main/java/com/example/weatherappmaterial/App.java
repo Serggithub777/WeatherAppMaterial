@@ -2,6 +2,7 @@ package com.example.weatherappmaterial;
 
 import android.app.Application;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.room.Room;
 
 import com.example.weatherappmaterial.dao.WeatherDao;
@@ -16,6 +17,7 @@ public class App extends Application {
 
     @Override
     public void onCreate() {
+
         super.onCreate();
         instance = this;
         wad = Room.databaseBuilder(
