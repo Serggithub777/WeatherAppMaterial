@@ -36,6 +36,7 @@ public class StartFragment extends Fragment {
     private OpenWeather openWeather;
     private  StartFragmentDialog startFragmentDialog;
     private WeatherRequest resultRequest;
+    private NetworkUtil networkUtil;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,7 +61,10 @@ public class StartFragment extends Fragment {
     private void onClickListenerShowWeather() {
         clickListenerShowWeather = view -> {
             String cityName = enteredCityName.getText().toString().trim();
-
+            int statusNet = NetworkUtil.getConnectivityStatusString(getContext());
+            if (statusNet == 0) {
+                Toast.makeText(getContext(), "Connection failure!", Toast.LENGTH_SHORT).show();
+            }
             if (cityName.isEmpty()) {
                 createToast("Enter city name!");
             } else {
